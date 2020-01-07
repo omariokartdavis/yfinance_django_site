@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1>Stock Tracker Home</h1>
+	
+	<p>Currently tracking {{ num_stocks }} different stocks.</p>
+	
+	<p>Most Recently added stocks:</p>
+	<ul>
+		{% for stock in recent_5_stocks_added %}
+			<li>
+				<p>{{ stock.ticker}}: {{ stock.price_set.first }}
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
