@@ -12,4 +12,4 @@ class StockAdmin(admin.ModelAdmin):
 	
 @admin.register(Price)
 class PriceAdmin(admin.ModelAdmin):
-	list_display = ('stock_price', 'stock', 'date')
+	list_display = ('stock_price', 'stock', 'time_stock_was_read')

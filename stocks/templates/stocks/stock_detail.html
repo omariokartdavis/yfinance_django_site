@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1>{{ stock.ticker }}: {{ stock.name }}</h1>
+	
+	<form action="{% url 'delete_stock' stock.id %}">
+		<input type="submit" class="input_submit" value="Delete Stock">
+	</form>
+	
+	<h3>Current Price: {{ stock.price.stock_price }}</h3>
+	
+	<ul>
+		{% for price in stock.price.history.all %}
+			<li>
+				<p>{{ price.time_stock_was_read }}: {{ price.stock_price }}</p>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

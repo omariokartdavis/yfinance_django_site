@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+	<h1>Delete Stock: {{ stock.ticker }}</h1>
+	
+	<p>Are you sure you want to delete {{ stock.ticker }} from the database?</p>
+	
+	<form method="POST">
+		{% csrf_token %}
+		<input type="submit" class="input_submit" value="Yes, Delete Stock" name='delete stock'>
+	</form>
+	<form action="{% url 'index' %}">
+		<input type="submit" class='input_submit' value="No">
+	</form>
+{% endblock %}

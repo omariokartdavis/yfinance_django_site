@@ -5,11 +5,17 @@
 	
 	<p>Currently tracking {{ num_stocks }} different stocks.</p>
 	
-	<p>Most Recently added stocks:</p>
+	<form method="post">
+		{% csrf_token %}
+		<p>Add New Stock: {{ new_stock_form.ticker }} (Enter a stock ticker, ex: AMZN) (If the stock does not show up in the list below after loading, it is likely because the entered ticker was incorrect)</p>
+		<input type="submit" class="input_submit" value="Add Stock" name="add new stock">
+	</form>
+	
+	<p>Currently tracked stocks:</p>
 	<ul>
-		{% for stock in recent_5_stocks_added %}
+		{% for stock in all_stocks %}
 			<li>
-				<p>{{ stock.ticker}}: {{ stock.price_set.first }}
+				<p><a class="stock_ticker_display" href="{{ stock.get_absolute_url }}">{{ stock.ticker}}</a></p>
 			</li>
 		{% endfor %}
 	</ul>
